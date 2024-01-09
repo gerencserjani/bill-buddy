@@ -1,2 +1,2 @@
-# bill-buddy
-Create groups, invite friends, distribute bills among the invited ones.
+# Receipt Radar
+Create groups, invite friends, distribute receipts among the invited ones.
