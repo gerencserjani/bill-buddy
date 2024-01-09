@@ -4,8 +4,7 @@ import { Readable } from 'stream';
 
 @Injectable()
 export class ReceiptService {
-    constructor(private readonly client: ChatGPTClient) {
-    }
+    constructor(private readonly client: ChatGPTClient) {}
 
     async parseReceipt(image: Readable): Promise<unknown> {
         const response = await this.client.processImage(
@@ -21,7 +20,8 @@ export class ReceiptService {
                 - Do not process rows with name starting as a number
                 - Response must be a json object! 
             `,
-            image);
-        return JSON.parse(response.choices[0].message.content.split("```json")[1].split("```")[0])
+            image,
+        );
+        return JSON.parse(response.choices[0].message.content.split('```json')[1].split('```')[0]);
     }
 }

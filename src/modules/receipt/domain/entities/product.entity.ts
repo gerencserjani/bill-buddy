@@ -11,6 +11,6 @@ export class Product implements IProduct {
     @Column({ type: 'number' })
     price: number;
 
-    @ManyToOne(() => Receipt, receipt => receipt.products)
+    @ManyToOne(() => Receipt, (receipt) => receipt.products)
     receipt: IReceipt;
 }

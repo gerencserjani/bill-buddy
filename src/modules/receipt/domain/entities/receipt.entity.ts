@@ -14,7 +14,7 @@ export class Receipt implements IReceipt {
     @Column({ type: 'string' })
     company: string;
 
-    @OneToMany(() => Product, product => product.receipt, { cascade: ['remove'] })
+    @OneToMany(() => Product, (product) => product.receipt, { cascade: ['remove'] })
     products: IProduct[];
 
     @Column({ type: 'number' })

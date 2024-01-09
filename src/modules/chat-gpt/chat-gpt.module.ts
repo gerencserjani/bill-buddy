@@ -13,7 +13,7 @@ import OPENAI_CONFIG from './configs/chat-gpt.options';
             provide: OPENAI_API,
             useFactory: (configs: ConfigService) => new OpenAI({ apiKey: configs.get(OPENAI_CONFIG_KEY).apiKey }),
             inject: [ConfigService],
-        }
+        },
     ],
     exports: [ChatGPTClient],
 })

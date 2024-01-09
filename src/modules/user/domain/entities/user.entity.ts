@@ -12,7 +12,7 @@ export class User implements IUser {
     @Column({ type: 'string' })
     lastName: string;
 
-    @Column({ type: 'string', unique: true  })
+    @Column({ type: 'string', unique: true })
     email: string;
 
     @Column({ type: 'string', unique: true, update: false })

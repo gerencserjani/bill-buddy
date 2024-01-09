@@ -13,6 +13,6 @@ export class Group implements IGroup {
     @Column({ type: 'string', array: true })
     members: string[];
 
-    @OneToMany(() => Receipt, receipt => receipt.group, { cascade: ['remove'] })
+    @OneToMany(() => Receipt, (receipt) => receipt.group, { cascade: ['remove'] })
     receipts: Receipt[];
 }

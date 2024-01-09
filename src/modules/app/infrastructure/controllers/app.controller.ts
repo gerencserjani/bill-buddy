@@ -3,10 +3,10 @@ import { APP_VERSION } from '../../app.constants';
 
 @Controller()
 export class AppController {
-  constructor(@Inject(APP_VERSION) private readonly version: string) {}
+    constructor(@Inject(APP_VERSION) private readonly version: string) {}
 
-  @Get('version')
-  getVersion(): { version: string } {
-    return { version: this.version };
-  }
+    @Get('version')
+    getVersion(): { version: string } {
+        return { version: this.version };
+    }
 }
