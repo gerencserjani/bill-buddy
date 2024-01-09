@@ -7,8 +7,8 @@ export class ReceiptService {
     constructor(private readonly client: ChatGPTClient) {
     }
 
-    parseReceipt(image: Readable): Promise<unknown> {
-        return this.client.processImage(
+    async parseReceipt(image: Readable): Promise<unknown> {
+        const response = await this.client.processImage(
             `Get the data from the receipt according to the following interface.
             {   
                 company: string;
@@ -16,8 +16,12 @@ export class ReceiptService {
                 total: number;
                 date: Date; 
             }
-            Provide only the object and nothing else!
+            Rules:
+                - Do not process empty or rows that do not contain money symbol like "Ft"
+                - Do not process rows with name starting as a number
+                - Response must be a json object! 
             `,
             image);
+        return JSON.parse(response.choices[0].message.content.split("```json")[1].split("```")[0])
     }
 }
