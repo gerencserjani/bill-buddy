@@ -7,6 +7,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ReceiptModule } from '../receipt/receipt.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import databaseConfig from './configs/database.config';
+import { GroupModule } from '../group/group.module';
+import { UserModule } from '../user/user.module';
 
 const version = JSON.parse(readFileSync('package.json').toString()).version;
 
@@ -20,6 +22,8 @@ const version = JSON.parse(readFileSync('package.json').toString()).version;
         }),
         ChatGPTModule,
         ReceiptModule,
+        GroupModule,
+        UserModule,
     ],
     controllers: [AppController],
     providers: [{ provide: APP_VERSION, useValue: version }],

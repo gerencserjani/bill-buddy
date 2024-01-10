@@ -1,5 +1,6 @@
 import { IProduct } from './product.interface';
 import { IGroup } from '../../../../group/domain/entities/interfaces/group.interface';
+import { IUser } from '../../../../user/domain/entities/interfaces/user.interface';
 
 export interface IReceipt {
     id: number;
@@ -7,6 +8,6 @@ export interface IReceipt {
     products: IProduct[];
     total: number;
     date: Date;
-    user: number;
+    owner: IUser;
     group?: IGroup;
 }

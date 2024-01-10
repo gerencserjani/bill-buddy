@@ -1,17 +1,21 @@
 import { IGroup } from './interfaces/group.interface';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 import { Receipt } from '../../../receipt/domain/entities/receipt.entity';
+import { IUser } from '../../../user/domain/entities/interfaces/user.interface';
+import { User } from '../../../user/domain/entities/user.entity';
 
 @Entity()
 export class Group implements IGroup {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'string' })
-    owner: string;
+    @ManyToOne(() => User, user => user.ownerOf)
+    @JoinColumn()
+    owner: IUser;
 
-    @Column({ type: 'string', array: true })
-    members: string[];
+    @ManyToMany(() => User, user => user.memberOf)
+    @JoinTable()
+    members: IUser[];
 
     @OneToMany(() => Receipt, (receipt) => receipt.group, { cascade: ['remove'] })
     receipts: Receipt[];

@@ -2,8 +2,11 @@ import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/c
 import { ReceiptService } from './domain/services/receipt.service';
 import { ReceiptController } from './infrastructure/controllers/receipt.controller';
 import expressFileUpload from 'express-fileupload';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Receipt } from './domain/entities/receipt.entity';
 
 @Module({
+    imports: [TypeOrmModule.forFeature([Receipt])],
     providers: [ReceiptService],
     controllers: [ReceiptController],
 })
